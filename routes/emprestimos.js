@@ -6,17 +6,41 @@ const mysql = require('../mysql').pool;
 router.get('/', (req, res, next) => {
   mysql.getConnection((error, conn) => {
     if (error) {return res.status(500).send({ error: error })}
-    conn.query('SELECT * FROM emprestimos;', (error, result, fields) => {
+          conn.query( `SELECT emprestimos.id_emprestimo,
+                                                emprestimos.id_associado,
+                                                associados.nome,
+                                                associados.sobrenome,
+                                                livros.id_livro,
+                                                livros.titulo,
+                                                editoras.id_editora,
+                                                editoras.nome,
+                                                emprestimos.prazo_devolucao,
+                                                emprestimos.data,
+                                                emprestimos.data_devolucao
+                                    FROM emprestimos
+                          INNER JOIN livros
+              ON livros.id_livro = emprestimos.id_livro
+                          INNER JOIN associados 
+                                          ON associados.id_associado = emprestimos.id_associado
+                          INNER JOIN editoras     
+                                          ON editoras.id_editora = livros.id_editora;`, 
+      (error, result, fields) => {
       if (error) {return res.status(500).send({ error: error })}
       const response = {
-        'quantidade de emprestimos': result.length,
         emprestimos: result.map((emprestimo) => {
           return {
-            id_emprestimo: emprestimo.id_emprestimo,
-            id_associado: emprestimo.id_associado,
-            data: emprestimo.data,
-            'prazo devolucao': emprestimo.prazo_devolucao,
-            'data devolucao': emprestimo.data_devolucao,
+            id_emprestimo: emprestimo.id_emprestimo, 
+            'quantidade de emprestimos': result.length,
+            dados_emprestimo: {
+              id_associado: emprestimos.id_associado,
+              associado: associados.nome,
+              livro: livros.id_livro,
+              editora: editoras.id_editora,
+              'nome editora': editoras.nome,
+              'prazo devolucao': emprestimos.prazo_devolucao,
+              data: emprestimos.data,
+              'data devolucao': emprestimos.data_devolucao,
+            },
             request: {
               tipo: 'GET',
               descricao: 'Retorrna os detalhes do empréstimo',
