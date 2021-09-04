@@ -67,7 +67,8 @@ router.get('/:id_livro', (req, res, next) => {
 
         if (result.length == 0) {return res.status(404).send({
             mensagem: 'Não há registro de livros com este ID.',
-          });}
+          });
+        }
         const response = {
           livro: {
             id_livro: result[0].id_livro,
