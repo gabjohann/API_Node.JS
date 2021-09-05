@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 
 const rotaLivros = require('./routes/livros');
 const rotaEmprestimos = require('./routes/emprestimos');
+const rotaAssociados = require('./routes/associados');
 
 // MÓDULOS
 app.use(morgan('dev'));
@@ -28,6 +29,7 @@ app.use((req, res, next) => {
 // ROTAS
 app.use('/livros', rotaLivros);
 app.use('/emprestimos', rotaEmprestimos);
+app.use('/associados', rotaAssociados);
 
 app.use((req, res, next) => {
   const erro = new Error('Não encontrado');
