@@ -16,10 +16,10 @@
   ## [](https://github.com/gabjohann/API_Node.JS#--funcoes) :dart: Funções
   Esta aplicação permite realizar CRUD em todas as rotas, ou seja, é possível cadastrar, consultar, alterar e deletar os livros, empréstimos e a lista de associados. Entretanto para realizar alterações nas rotas, se faz necessário se autenticar através de um token temporário gerada pela mesma.
 
-  ## [](https://github.com/gabjohann/NLW06_beautysalon#--tecnologias-utilizadas)💻 Tecnologias utilizadas
+  ## [](https://github.com/gabjohann/API_Node.JS#--tecnologias-utilizadas)💻 Tecnologias utilizadas
 
 ### Aplicação
-A API foi desenvolida utilizando:
+Esta API foi desenvolida utilizando:
   - SQL
   - JavaScript
   - Node.JS
@@ -29,7 +29,7 @@ A API foi desenvolida utilizando:
   - MySQL Workbench: Desenvolvimento do Banco de Dados
   - Teste da API: Postman
   
-### Utilização da API
+### Utilização da API:
   - clone este repositório
   - garanta que tenha instalado o node.js e npm na sua máquina, utilize ```node -v``` & ```npm -v``` para confirmar
   - caso não tenha, instale seguindo a documentação do mesmo
